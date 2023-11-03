@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías Chapinas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if nombre_archivo %}
+    <script>
+        alert("{{ nombre_archivo }}");
+        window.location.href = '/';
+    </script>
+    {% endif %}
+
+    <header>
+        <div class="contenido-cabecera">
+            <h1 class="titulo-cabecera"><a href="{% url 'index' %}">Tecnologías Chapinas</a></h1>
+            <nav class="menu-cabecera">
+                <ul>
+                    <li><a href="{% url 'restaurar_datos' %}">Restaurar datos</a></li>
+                    <li class="desplegable">
+                        <a href="#">Peticiones</a>
+                        <div class="contenido-desplegable">
+                            <a href="{% url 'consultar_hashtags' %}">Consultar hashtags</a>
+                            <a href="{% url 'consultar_menciones' %}">Consultar menciones</a>
+                            <a href="{% url 'consultar_sentimientos' %}">Consultar sentimientos</a>
+                        </div>
+                    </li>
+                    <li class="desplegable">
+                        <a href="#">Graficas</a>
+                        <div class="contenido-desplegable">
+                            <a href="{% url 'graficar_hashtags' %}">Graficar hashtags</a>
+                            <a href="{% url 'graficar_menciones' %}">Graficar menciones</a>
+                            <a href="{% url 'graficar_sentimientos' %}">Graficar sentimientos</a>
+                        </div>
+                    </li>
+                    <li class="desplegable">
+                        <a href="#">Ayuda</a>
+                        <div class="contenido-desplegable">
+                            <a href="{% url 'informacion_estudiante' %}">Información del estudiante</a>
+                            <a href="https://drive.google.com/file/d/1pnvXfT5t5aKA4xTnYNX4rxqO8cCDEtgn/view?usp=sharing" target="_blank" >Documentación</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="contenedor-mensajes">
+            {% for mensaje in mensajes %}
+            <div class="caja-mensaje">
+                <div class="encabezado-mensaje">
+                    <span class="fecha-mensaje">{{ mensaje.fecha }}</span>
+                    <span class="sentimiento-mensaje {% if mensaje.sentimiento == 'POSITIVO' %}sentimiento-positivo{% elif mensaje.sentimiento == 'NEGATIVO' %}sentimiento-negativo{% else %}sentimiento-neutro{% endif %}">{{ mensaje.sentimiento }}</span>
+                </div>
+                <div class="contenido-mensaje">{{ mensaje.contenido }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <form method="post" enctype="multipart/form-data" action="{% url 'cargar_configuracion' %}">
+        {% csrf_token %}
+        <label class="upload-label" for="archivo_configuracion_input">
+            <img src="{% static 'img/upload.png' %}" alt="Icono de carga"> Subir archivo de configuración
+        </label>
+        <input type="file" name="archivo_configuracion" id="archivo_configuracion_input" accept=".xml" required>
+        <button type="submit">Cargar configuración</button>
+    </form>
+
+    <form method="post" enctype="multipart/form-data" action="{% url 'cargar_mensajes' %}">
+        {% csrf_token %}
+        <label class="upload-label" for="archivo_xml_input">
+            <img src="{% static 'img/upload.png' %}" alt="Icono de carga"> Subir archivo de mensajes
+        </label>
+        <input type="file" name="archivo_xml" id="archivo_xml_input" accept=".xml" required>
+        <button type="submit">Cargar mensajes</button>
+    </form>
+
+    
+
+    <footer>
+        <p>&copy; {{ year }} Tecnologías Chapinas</p>
+    </footer>
+</body>
+</html>
