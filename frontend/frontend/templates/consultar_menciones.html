@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Menciones</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="contenido-cabecera">
+            <h1 class="titulo-cabecera"><a href="{% url 'index' %}">Tecnologías Chapinas</a></h1>
+            <nav class="menu-cabecera">
+                <ul>
+                    <li><a href="{% url 'restaurar_datos' %}">Restaurar datos</a></li>
+                    <li class="desplegable">
+                        <a href="#">Peticiones</a>
+                        <div class="contenido-desplegable">
+                            <a href="{% url 'consultar_hashtags' %}">Consultar hashtags</a>
+                            <a href="{% url 'consultar_menciones' %}">Consultar menciones</a>
+                            <a href="{% url 'consultar_sentimientos' %}">Consultar sentimientos</a>
+                        </div>
+                    </li>
+                    <li class="desplegable">
+                        <a href="#">Graficas</a>
+                        <div class="contenido-desplegable">
+                            <a href="{% url 'graficar_hashtags' %}">Graficar hashtags</a>
+                            <a href="{% url 'graficar_menciones' %}">Graficar menciones</a>
+                            <a href="{% url 'graficar_sentimientos' %}">Graficar sentimientos</a>
+                        </div>
+                    </li>
+                    <li class="desplegable">
+                        <a href="#">Ayuda</a>
+                        <div class="contenido-desplegable">
+                            <a href="{% url 'informacion_estudiante' %}">Información del estudiante</a>
+                            <a href="https://drive.google.com/file/d/1pnvXfT5t5aKA4xTnYNX4rxqO8cCDEtgn/view?usp=sharing" target="_blank" >Documentación</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <h1>Consulta de Menciones</h1>
+    <form method="post" action="{% url 'consultar_menciones' %}">
+        {% csrf_token %}
+        <label for="fecha_inicio">Fecha de inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio" required value="{{ fecha_inicio }}">
+
+        <label for="fecha_fin">Fecha de fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin" required value="{{ fecha_fin }}">
+
+        <button class="consulta-button" type="submit">Consultar Menciones</button>
+    </form>
+
+    <div class="hashtags-consulta">
+        {% if resultados %}
+            {% for resultado in resultados %}
+            <div class="hashtag-card">
+                <h2>{{ resultado.fecha }}</h2>
+                <ul>
+                    {% for usuario in resultado.usuarios %}
+                    <li>{{ usuario.usuario }} : {{ usuario.cantidad }} mensajes</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No se encontraron resultados para las fechas especificadas.</p>
+        {% endif %}
+    </div>
+
+    <div class="Grafica">
+    <canvas id="grafico-usuarios" width="300" height="100"></canvas>
+    </div>
+
+    <button class="pdf-button" onclick="descargarComoPDF()">Guardar como PDF</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        function descargarComoPDF() {
+            window.print();
+        }
+
+        // Inicializa el gráfico con los datos proporcionados
+        var ctx = document.getElementById('grafico-usuarios').getContext('2d');
+        var labels = JSON.parse('{{ labels_json|safe }}');
+        var data = JSON.parse('{{ data_json|safe }}');
+        var chart = new Chart(ctx, {
+            type: 'bar', // Puedes cambiarlo a 'pie' para un gráfico de pastel
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Usuarios más mencionados entre {{ fecha_inicio }} y {{ fecha_fin }}'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    
+
+    <footer>
+        <p>&copy; {{ year }} Tecnologías Chapinas</p>
+    </footer>
+
+</body>
+</html>

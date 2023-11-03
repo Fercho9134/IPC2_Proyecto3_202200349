@@ -1,0 +1,313 @@
+/* Reset de estilos para quitar el espaciado predeterminado en el cuerpo */
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    color: #3b5998;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #3b5998;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contenido-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo-cabecera {
+    font-size: 24px;
+}
+
+.titulo-cabecera a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu-cabecera ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.menu-cabecera li {
+    margin-right: 30px;
+}
+
+.menu-cabecera a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.menu-cabecera a:hover {
+    color: #ffcc00;
+}
+
+.desplegable {
+    position: relative;
+}
+
+.contenido-desplegable {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #3b5998;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contenido-desplegable a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+
+.desplegable:hover .contenido-desplegable {
+    display: block;
+}
+
+/* Estilos del contenedor de mensajes */
+.contenedor-mensajes {
+    padding: 20px;
+}
+
+.contenedor-mensajes img{
+    /*centramos la imagen al centro y que ocupe toda la pantalla*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
+}
+
+.caja-mensaje {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.encabezado-mensaje {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.sentimiento-mensaje {
+    font-weight: bold;
+}
+
+.sentimiento-positivo {
+    color: green;
+}
+
+.sentimiento-negativo {
+    color: red;
+}
+
+.sentimiento-neutro {
+    color: gray;
+}
+
+.fecha-mensaje {
+    color: #333;
+}
+
+.contenido-mensaje {
+    margin-top: 10px;
+}
+
+
+/* Estilos del pie de página */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #3b5998;
+    color: #fff;
+    margin-top: auto;
+}
+
+/* Estilo moderno para el formulario de carga de archivos con una imagen como icono */
+form {
+    background-color: #f0f0f0;
+    border: 2px dashed #3b5998;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+/* Estilo para el campo de entrada de archivos oculto */
+input[type="file"] {
+    display: none;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+
+form input[type="date"] {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Estilo para el botón de carga de archivos con un icono */
+label.upload-label {
+    background-color: #3b5998;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+label.upload-label:hover {
+    background-color: #ffcc00; /* Cambia el color de fondo al pasar el ratón */
+}
+
+/* Estilo para la imagen de icono */
+label.upload-label img {
+    width: 24px; /* Ajusta el ancho de la imagen según tus necesidades */
+    height: 24px; /* Ajusta el alto de la imagen según tus necesidades */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+/* Estilo para el botón Submit */
+button[type="submit"] {
+    background-color: #3b5998;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffcc00; /* Cambia el color de fondo al pasar el ratón */
+}
+
+/* Estilo para el mensaje de nombre de archivo */
+label.file-name-label {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Estilos para las tarjetas de hashtags */
+.hashtags-consulta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hashtag-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.hashtag-card h2 {
+    font-size: 18px;
+    color: #3b5998;
+    margin-bottom: 10px;
+}
+
+.hashtag-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.hashtag-card li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Estilo para el botón de generación de PDF */
+button.pdf-button {
+    background-color: #3b5998;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 30%;
+    margin: 20px auto;
+
+}
+
+button.pdf-button:hover {
+    background-color: #ffcc00; /* Cambia el color de fondo al pasar el ratón */
+}
+
+@media print {
+    /* Ocultar el encabezado y el pie de página */
+    header, footer {
+        display: none;
+    }
+
+    /* Ocultar botones u otros elementos que no desees imprimir */
+    .pdf-button {
+        display: none;
+    }
+
+    .consulta-button{
+        display: none;
+    }
+}
+
+.Grafica{
+    width: 60%;
+    height: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.informacion-estudiante {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 400px; /* Ancho máximo para centrar la información */
+    margin: 0 auto; /* Centrar en la página */
+}
+
+.informacion-estudiante p {
+    font-size: 16px;
+    margin: 10px 0;
+}

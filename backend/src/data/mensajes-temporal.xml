@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<mensajes>
+   <mensaje fecha="15/01/2023" sentimiento="POSITIVO">
+      <contenido> bienvenido a usac @estudiante01 @estudiante02, es un gusto que seas parte de esta institucion #bienvenidausac#</contenido>
+      <menciones>
+         <mencion>@estudiante01</mencion>
+         <mencion>@estudiante02</mencion>
+      </menciones>
+      <hashtags>
+         <hashtag>#bienvenidausac#</hashtag>
+      </hashtags>
+   </mensaje>
+   <mensaje fecha="19/02/2021" sentimiento="NEGATIVO">
+      <contenido> que trafico mas horrible, pero bueno a veces toca #bonito# #soleado# @mencion1 @mencion1 @mencion2</contenido>
+      <menciones>
+         <mencion>@mencion1</mencion>
+         <mencion>@mencion2</mencion>
+      </menciones>
+      <hashtags>
+         <hashtag>#bonito#</hashtag>
+         <hashtag>#soleado#</hashtag>
+      </hashtags>
+   </mensaje>
+   <mensaje fecha="30/10/2023" sentimiento="NEGATIVO">
+      <contenido> dia malo, toca un dormir triste @jose_302004 #tristeza#</contenido>
+      <menciones>
+         <mencion>@jose_302004</mencion>
+      </menciones>
+      <hashtags>
+         <hashtag>#tristeza#</hashtag>
+      </hashtags>
+   </mensaje>
+   <mensaje fecha="15/01/2023" sentimiento="NEUTRO">
+      <contenido> mensaje 2 @estudiante03</contenido>
+      <menciones>
+         <mencion>@estudiante03</mencion>
+      </menciones>
+      <hashtags/>
+   </mensaje>
+   <mensaje fecha="19/02/2021" sentimiento="NEUTRO">
+      <contenido> otro mensaje @lol #bonito# #navidad# @mencion1</contenido>
+      <menciones>
+         <mencion>@lol</mencion>
+         <mencion>@mencion1</mencion>
+      </menciones>
+      <hashtags>
+         <hashtag>#bonito#</hashtag>
+         <hashtag>#navidad#</hashtag>
+      </hashtags>
+   </mensaje>
+   <mensaje fecha="21/02/2021" sentimiento="NEUTRO">
+      <contenido> prueba del mensaje del 21/02/2021 #soleado# #paz# @mencion69</contenido>
+      <menciones>
+         <mencion>@mencion69</mencion>
+      </menciones>
+      <hashtags>
+         <hashtag>#soleado#</hashtag>
+         <hashtag>#paz#</hashtag>
+      </hashtags>
+   </mensaje>
+   <mensaje fecha="21/02/2021" sentimiento="NEUTRO">
+      <contenido> prueba del mensaje del 21/02/2021 #soleado# #paz# @mencion69</contenido>
+      <menciones>
+         <mencion>@mencion69</mencion>
+      </menciones>
+      <hashtags>
+         <hashtag>#soleado#</hashtag>
+         <hashtag>#paz#</hashtag>
+      </hashtags>
+   </mensaje>
+   <mensaje fecha="15/01/2023" sentimiento="NEUTRO">
+      <contenido> mensaje 3 @estudiante01</contenido>
+      <menciones>
+         <mencion>@estudiante01</mencion>
+      </menciones>
+      <hashtags/>
+   </mensaje>
+</mensajes>
